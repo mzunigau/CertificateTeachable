@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+
+
+    <style>
+        .bg {
+            position: absolute;
+            height: 300px;
+            right: 0;
+        }
+        
+        .cert,
+        .cert * {
+            font-family: 'Karla', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .cert {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 800px;
+            height: 600px;
+        }
+        
+        .certNum {
+            font-size: 10px;
+            position: absolute;
+            width: 100%;
+            text-align: right;
+            top: 56px;
+            right: 50px;
+        }
+        
+        .container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border: solid 1px #ccc;
+        }
+        
+        .contenido {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 186px;
+            padding: 30px;
+        }
+        
+        .logo img {
+            width: 200px;
+            height: auto;
+            left: 50px;
+            position: absolute;
+        }
+        
+        .curso {
+            color: rgb(0, 216, 185);
+            font-size: 25px;
+            font-weight: 600px;
+        }
+        
+        .footer {
+            position: absolute;
+            text-align: center;
+            font-size: 30px;
+            color: #fff;
+            bottom: 0px;
+            height: 100px;
+            width: 100%;
+            background-color: rgb(0, 216, 185);
+            line-height: 100px;
+        }
+        
+        .fecha {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 389px
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="cert">
+
+        <svg class="bg" viewBox="0 0 284 193" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g transform="matrix(1,0,0,1,-516,0)">
+                <path d="M800,0L530.982,0C530.982,0 523.885,13.434 520.751,23.652C497.538,99.352 571.797,91.743 623.205,96.306C643.199,98.08 663.219,103.04 681.968,110.136C721,124.907 742.556,160.489 777.168,181.579C784.667,186.149 800,192.984 800,192.984L800,0Z" style="fill:rgb(0,216,185);"/>
+            </g>
+        </svg>
+
+        <!-- Logotipo TAG-->
+        <div class="logo"><img src="https://i.imgur.com/0EA5fNw.png"></div>
+
+
+        <div class="container">
+
+            <h5 class="certNum">Certificate No. {{ course.report_card.certificate_serial_number }}</h5>
+
+            <h2 class="contenido">Este documento certifica que {{ current_user.name }} ha completado el curso en línea
+                <p class="curso">{{ course.name }}.</p>
+            </h2>
+
+            <h4 class="fecha">{{ course.report_card.certificate_issued_at | date: "%m-%d-%Y" }} </h4>
+            <div class="footer">
+                <h4>Plataforma de enseñanza en línea</h4>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
