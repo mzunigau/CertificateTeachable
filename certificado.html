@@ -76,8 +76,8 @@
 
             <!-- Fecha de emision -->
 
-            <h4 class="fecha">Fecha de finalización: {{ course.report_card.certificate_issued_at | date: "%d" }} {% assign m = course.report_card.certificate_issued_at | date: "%-m" %} {% case m %} {% when '1' %}Enero {% when '2' %}Febrero {% when '3' %}Marzo {% when '4'
-                %}Abril {% when '5' %}Mayo {% when '6' %}Junio {% when '7' %}Julio {% when '8' %}Agosto {% when '9' %}Septiembre {% when '10' %}Octubre {% when '11' %}Noviembre {% when '12' %}Diciembre {% endcase %} {{ course.report_card.certificate_issued_at
+            <h4 class="fecha">Fecha de finalización: {{ course.report_card.certificate_issued_at | date: "%d" }} de {% assign m = course.report_card.certificate_issued_at | date: "%-m" %} {% case m %} {% when '1' %}Enero {% when '2' %}Febrero {% when '3' %}Marzo {% when
+                '4' %}Abril {% when '5' %}Mayo {% when '6' %}Junio {% when '7' %}Julio {% when '8' %}Agosto {% when '9' %}Septiembre {% when '10' %}Octubre {% when '11' %}Noviembre {% when '12' %}Diciembre {% endcase %} del {{ course.report_card.certificate_issued_at
                 | date: "%Y" }}</h4>
 
             <div class="footer">
