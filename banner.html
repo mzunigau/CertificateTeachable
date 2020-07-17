@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Banner Itoo</title>
+
+    <!-- IMPORTANTE PARA MEDIA QUERY-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- REFERENCIA DE TIPOGRAFIA PERSONALIZADA-->
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<!-- HOJA DE ESTILOS DEL BANNER-->
+<style>
+    body {
+        margin: 0;
+    }
+    
+    .hero {
+        /* Sizing */
+        width: 100%;
+        height: 780px;
+        /* Flexbox  */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Text  */
+        text-align: center;
+        /* Background  */
+        /* IMPORTANTE ALOJAR LA IMAGEN EN ALGUN HOSTING PARA EVITAR QUE SE ELIMINE*/
+        background-image: url(https://cdn.fs.teachablecdn.com/uzul0H5aQqWyakR03Ew5);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    
+    .hero h1 {
+        /* Estilo de texto */
+        font-size: 3em;
+        /* Margins */
+        margin-top: 0;
+        margin-bottom: 0.5em;
+    }
+    
+    .hero h1,
+    h2 {
+        font-family: 'Inter', sans-serif;
+        color: #323232;
+    }
+    
+    .hero .btn {
+        /* Positioning y sizing */
+        display: block;
+        width: 200px;
+        /* Padding y margins */
+        padding: 1em;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        /* Estilo de texto */
+        font-family: 'Inter', sans-serif;
+        color: white;
+        text-decoration: none;
+        font-size: 1.5em;
+        /* Estilo de borde */
+        border: 3px solid white;
+        border-radius: 20px;
+        /* Color de fondo */
+        background-color: #0e57b7;
+    }
+    
+    .hero-inner {
+        padding: 20px;
+    }
+    
+    #imagethree {
+        width: 200px;
+        display: none;
+    }
+    /* RESPONSIVE ESCRITORIO  */
+    
+    @media screen and (min-width: 1200px) {
+        #imagethree {
+            min-width: 600px;
+            display: block;
+        }
+        .hero-inner {
+            width: 600px;
+        }
+        .hero h1 {
+            /* Estilo de texto */
+            font-size: 4em;
+        }
+        .hero h2 {
+            font-weight: 300;
+        }
+    }
+</style>
+
+<body>
+
+
+
+
+    <!-- SECTION COPIAR Y PEGAR -->
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>Plataforma de educación digital con los mejores instructores</h1>
+            <h2>Cursos originales, con el soporte personalizado de sus instructores y la mejor calidad de enseñanza.</h2>
+            <a href="https://sso.teachable.com/secure/600175/users/sign_up" class="btn">Registrate</a>
+
+        </div>
+        <div class="vector">
+            <img id="imagethree" src="https://i.imgur.com/dBYzXcD.png" alt="">
+        </div>
+
+    </section>
+
+
+
+
+
+</body>
+
+</html>

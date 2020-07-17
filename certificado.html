@@ -2,13 +2,98 @@
 <html>
 
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+
+    <script>
+        fetch(`https://itoo-api.herokuapp.com/course/{{course.id}}`)
+            .then((response) => {
+                return response.json();
+            })
+            .then((result) => {
+                console.log(result);
+
+                document.getElementById("tc-instructor-name").innerHTML = result.instructor.name;
+
+                document.getElementById("instructor-firma").innerHTML =
+                    result.instructor.name.replace(/\s*$/, "");
+                document.getElementById("tc-hours").innerHTML =
+                    `<span style>${result.hours}</span>`;
+
+                console.log(result.hours);
+                console.log(result.instructor.name.replace(/\s*$/, ""));
+
+            });
+    </script>
+
+
+
+
+</head>
+
+<body>
+
+    <div class="cert">
+
+        <svg class="bg" viewBox="0 0 284 193" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g transform="matrix(1,0,0,1,-516,0)">
+                <path
+                    d="M800,0L530.982,0C530.982,0 523.885,13.434 520.751,23.652C497.538,99.352 571.797,91.743 623.205,96.306C643.199,98.08 663.219,103.04 681.968,110.136C721,124.907 742.556,160.489 777.168,181.579C784.667,186.149 800,192.984 800,192.984L800,0Z"
+                    style="fill:rgba(0, 216, 184, 0.096);" />
+            </g>
+        </svg>
+
+        <!-- Logotipo TAG-->
+        <div class="logo"><img src="https://cdn.fs.teachablecdn.com/4bXGTTNzSKCiEiyVk0Te"></div>
+
+
+        <div class="container">
+
+            <!-- Num Certificado generado por teachable -->
+            <h5 class="certNum">No. de Certificado: {{ course.report_card.certificate_serial_number }}</h5>
+            <h2 class="title">CERTIFICADO DE FINALIZACIÓN</h2>
+
+            <!-- Nombre Instructor  {{ current_user.name }}-->
+            <h3 class="contenido">Este documento certifica que <b class="strong">{{ current_user.name }}</b> ha completado con éxito <span id="tc-hours"></span> horas del curso en línea:
+            </h3>
+
+            <!-- Nombre Curso {{ course.name }} -->
+            <h3 class="curso">{{ course.name }}</h3>
+
+
+            <!-- Nombre Instructor -->
+            <h2 class="instructor" id="tc-instructor-name"></h2>
+
+
+            <!-- Profesion -->
+            <h2 class="typeInstructor">
+                <span id="instructor-firma"></span>, Instructor
+            </h2>
+
+            <!-- Fecha de emision -->
+            <h4 class="fecha">Fecha de finalización: {{ course.report_card.certificate_issued_at | date: "%m-%d-%Y" }} </h4>
+
+            <div class="footer">
+
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        .strong {
+            font-weight: 600;
+        }
+    </style>
 
     <style>
         .bg {
             position: absolute;
-            height: 300px;
+            height: 220px;
             right: 0;
         }
         
@@ -21,6 +106,7 @@
         }
         
         .cert {
+            background: #fff;
             position: relative;
             left: 0;
             top: 0;
@@ -33,8 +119,8 @@
             position: absolute;
             width: 100%;
             text-align: right;
-            top: 56px;
-            right: 50px;
+            top: 60px;
+            right: 80px;
         }
         
         .container {
@@ -50,32 +136,39 @@
             position: absolute;
             width: 100%;
             text-align: center;
-            top: 186px;
-            padding: 30px;
+            top: 250px;
+            padding-left: 90px;
+            padding-right: 90px;
             font-weight: 300;
+            line-height: 27px;
         }
         
         .title {
             position: absolute;
             width: 100%;
             text-align: center;
-            top: 125px;
+            top: 150px;
             padding: 30px;
-            font-size: 30px;
+            font-size: 35px;
             font-weight: 900;
         }
         
         .logo img {
             width: 200px;
             height: auto;
-            left: 50px;
+            left: 60px;
             position: absolute;
+            top: 25px;
         }
         
         .curso {
-            color: rgb(0, 216, 185);
-            font-size: 25px;
+            color: #323232;
+            font-size: 20px;
             font-weight: 600;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 320px;
         }
         
         .footer {
@@ -84,53 +177,44 @@
             font-size: 30px;
             color: #fff;
             bottom: 0px;
-            height: 100px;
+            height: 25px;
             width: 100%;
             background-color: rgb(0, 216, 185);
-            line-height: 100px;
         }
         
         .fecha {
             position: absolute;
             width: 100%;
             text-align: center;
-            top: 389px
+            top: 500px
+        }
+        
+        .instructor {
+            font-family: 'Monsieur La Doulaise', sans-serif;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 350px;
+            padding: 30px;
+            font-weight: 100;
+            font-size: 34px;
+        }
+        
+        .typeInstructor {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 395px;
+            padding: 30px;
+            font-size: 13px;
+            font-weight: 200;
+        }
+        
+        .hours {
+            font-weight: 200;
+            display: block;
         }
     </style>
-
-
-</head>
-
-<body>
-
-    <div class="cert">
-
-        <svg class="bg" viewBox="0 0 284 193" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-            <g transform="matrix(1,0,0,1,-516,0)">
-                <path d="M800,0L530.982,0C530.982,0 523.885,13.434 520.751,23.652C497.538,99.352 571.797,91.743 623.205,96.306C643.199,98.08 663.219,103.04 681.968,110.136C721,124.907 742.556,160.489 777.168,181.579C784.667,186.149 800,192.984 800,192.984L800,0Z" style="fill:rgb(0,216,185);"/>
-            </g>
-        </svg>
-
-        <!-- Logotipo TAG-->
-        <div class="logo"><img src="https://i.imgur.com/0EA5fNw.png"></div>
-
-
-        <div class="container">
-
-            <h5 class="certNum">Certificate No. {{ course.report_card.certificate_serial_number }}</h5>
-            <h2 class="title">Certificado de finalización</h2>
-
-            <h2 class="contenido">Este documento certifica que {{ current_user.name }} ha completado el curso en línea
-                <p class="curso">{{ course.name }}</p>
-            </h2>
-
-            <h4 class="fecha">{{ course.report_card.certificate_issued_at | date: "%m-%d-%Y" }} </h4>
-            <div class="footer">
-                <h4>Plataforma de enseñanza en línea</h4>
-            </div>
-
-        </div>
-    </div>
 
 </body>
 
