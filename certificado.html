@@ -6,59 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-
-
-    <div class="cert">
-
-        <!-- Logotipo TAG-->
-        <div class="logo"><img src="https://cdn.fs.teachablecdn.com/4bXGTTNzSKCiEiyVk0Te"></div>
-
-
-        <div class="container">
-
-            <!-- Num Certificado generado por teachable -->
-            <h5 class="certNum">No. de Certificado: {{ course.report_card.certificate_serial_number }}</h5>
-            <h2 class="title">CERTIFICADO DE FINALIZACIÓN</h2>
-
-            <!-- Nombre Instructor -->
-            <h3 class="contenido">Este documento certifica que <b class="strong">{{ current_user.name }}</b> ha completado con éxito
-
-                <!-- HORAS DEL CURSO DENTRO DEL TC-HOURS -->
-                <span id="tc-hours"></span> horas del curso en línea:
-            </h3>
-
-            <!-- Nombre Curso-->
-            <h3 class="curso">{{ course.name }}</h3>
-
-
-            <!-- NOMBRE DEL INSTRUCTOR DENTRO tc-instructor-name -->
-            <h2 class="instructor" id="tc-instructor-name"></h2>
-
-
-            <!-- NOMBRE DEL INSTRUCTOR DENTRO instructor-firma -->
-            <h2 class="typeInstructor">
-                <span id="instructor-firma"></span>, Instructor
-            </h2>
-
-            <!-- Fecha de emision -->
-
-            <h4 class="fecha">Fecha de finalización: {{ course.report_card.certificate_issued_at | date: "%d" }} de {% assign m = course.report_card.certificate_issued_at | date: "%-m" %} {% case m %} {% when '1' %}Enero {% when '2' %}Febrero {% when '3' %}Marzo {% when
-                '4' %}Abril {% when '5' %}Mayo {% when '6' %}Junio {% when '7' %}Julio {% when '8' %}Agosto {% when '9' %}Septiembre {% when '10' %}Octubre {% when '11' %}Noviembre {% when '12' %}Diciembre {% endcase %} del {{ course.report_card.certificate_issued_at
-                | date: "%Y" }}</h4>
-
-            <div class="footer">
-
-            </div>
-
-        </div>
-    </div>
-
 
     <style>
         .strong {
@@ -67,6 +16,15 @@
     </style>
 
     <style>
+        .cert-wrapper {
+            width: 800px;
+            height: 600px;
+        }
+        
+        body {
+            text-rendering: optimizeLegibility;
+        }
+        
         .bg {
             position: absolute;
             height: 220px;
@@ -75,7 +33,7 @@
         
         .cert,
         .cert * {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Work Sans', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -92,9 +50,9 @@
         }
         
         .certNum {
-            font-size: 10px;
+            font-size: 15px;
             position: absolute;
-            width: 100%;
+            width: 400px;
             text-align: right;
             top: 60px;
             right: 80px;
@@ -113,26 +71,26 @@
             position: absolute;
             width: 100%;
             text-align: center;
-            top: 250px;
-            padding-left: 90px;
-            padding-right: 90px;
-            font-weight: 300;
+            top: 220px;
+            padding-left: 50px;
+            padding-right: 50px;
+            font-weight: 400;
             line-height: 27px;
+            font-size: 25px;
         }
         
         .title {
             position: absolute;
             width: 100%;
             text-align: center;
-            top: 150px;
+            top: 130px;
             padding: 30px;
             font-size: 35px;
-            font-weight: 900;
         }
         
         .logo img {
             width: 200px;
-            height: auto;
+            height: 84px;
             left: 60px;
             position: absolute;
             top: 25px;
@@ -140,22 +98,21 @@
         
         .curso {
             color: #323232;
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 24px;
+            font-weight: 800;
             position: absolute;
             width: 100%;
             text-align: center;
-            top: 320px;
+            top: 310px;
+            padding-left: 40px;
+            padding-right: 40px;
         }
         
         .footer {
             position: absolute;
-            text-align: center;
-            font-size: 30px;
-            color: #fff;
             bottom: 0px;
             height: 25px;
-            width: 100%;
+            width: 800px;
             background-color: rgb(0, 216, 185);
         }
         
@@ -163,7 +120,8 @@
             position: absolute;
             width: 100%;
             text-align: center;
-            top: 500px
+            top: 520px;
+            font-size: 18px;
         }
         
         .instructor {
@@ -187,23 +145,79 @@
             font-weight: 200;
         }
         
-        .hours {
-            font-weight: 200;
-            display: block;
+        #tc-hours {
+            font-weight: 600;
+            display: inline;
+            font-size: 25px !important;
         }
     </style>
 
+</head>
+
+<body>
+
+
+    <div class="cert">
+
+        <!-- Logotipo TAG-->
+        <div class="logo"><img src="https://cdn.fs.teachablecdn.com/4bXGTTNzSKCiEiyVk0Te"></div>
+
+
+        <div class="container">
+
+            <!-- Num Certificado generado por teachable -->
+            <h5 class="certNum">No. de Certificado: {{ course.report_card.certificate_serial_number }}</h5>
+            <h2 class="title">CERTIFICADO DE FINALIZACIÓN</h2>
+
+            <!-- Nombre Instructor -->
+            <h3 class="contenido">Este documento certifica que <b class="strong">{{ current_user.name}}</b> ha completado con éxito
+
+                <!-- HORAS DEL CURSO DENTRO DEL TC-HOURS -->
+                <p id="tc-hours" class="hours"></p> horas del curso en línea:
+            </h3>
+
+            <!-- Nombre Curso-->
+            <h3 class="curso">{{ course.name }}</h3>
+
+
+            <!-- NOMBRE DEL INSTRUCTOR DENTRO tc-instructor-name -->
+            <h2 class="instructor" id="tc-instructor-name"></h2>
+
+
+            <!-- NOMBRE DEL INSTRUCTOR DENTRO instructor-firma -->
+            <h2 class="typeInstructor">
+                <span id="instructor-firma"></span>, Instructor
+            </h2>
+
+            <!-- Fecha de emision -->
+
+            <h4 class="fecha">Fecha de finalización: {{ course.report_card.certificate_issued_at | date: "%d" }} de {% assign m = course.report_card.certificate_issued_at | date: "%-m" %} {% case m %} {% when '1' %}Enero {% when '2' %}Febrero {% when '3' %}Marzo {% when
+                '4' %}Abril {% when '5' %}Mayo {% when '6' %}Junio {% when '7' %}Julio {% when '8' %}Agosto {% when '9' %}Septiembre {% when '10' %}Octubre {% when '11' %}Noviembre {% when '12' %}Diciembre {% endcase %} del {{ course.report_card.certificate_issued_at
+                | date: "%Y" }}
+
+            </h4>
+
+            <div class="footer">
+
+            </div>
+
+        </div>
+    </div>
+
     <script>
         /*NOMBRE DEL INSTRUCTOR*/
-        var nombre = "";
+        var nombre = "Alain Nicolás Tello";
 
         /* HORAS DEL CURSO*/
-        var horas = "";
+        var horas = "2";
 
         document.getElementById("tc-instructor-name").innerHTML = nombre;
         document.getElementById("instructor-firma").innerHTML = nombre;
         document.getElementById("tc-hours").innerHTML = horas;
     </script>
+
+
+
 
 
 </body>
